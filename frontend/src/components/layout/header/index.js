@@ -1,17 +1,16 @@
+import { isEmpty } from "lodash";
 import Nav from "./nav";
-import {isEmpty} from 'lodash'
 
-const Header = ({headerMenus}) => {
+const Header = ({ headerMenus }) => {
+  if (isEmpty(headerMenus)) {
+    return null;
+  }
 
-	if ( isEmpty(headerMenus) ) {
-		return null;
-	}
+  return (
+    <header>
+      <Nav headerMenus={headerMenus} />
+    </header>
+  );
+};
 
-	return (
-		<header>
-			<Nav headerMenus={headerMenus}/>
-		</header>
-	)
-}
-
-export default Header
+export default Header;
